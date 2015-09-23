@@ -1,0 +1,3 @@
+[submodule "pyobd-pi"]
+	path = pyobd-pi
+	url = https://github.com/Pbartek/pyobd-pi.git
