@@ -1,3 +1,6 @@
 [submodule "pyobd-pi"]
 	path = pyobd-pi
 	url = https://github.com/Pbartek/pyobd-pi.git
+[submodule "pyonep"]
+	path = pyonep
+	url = https://github.com/exosite-labs/pyonep.git
