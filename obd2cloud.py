@@ -63,7 +63,8 @@ class Obd2Cloud():
 			for index in self.sensorlist:
 				(name, value, unit) = self.port.sensor(index)
 				#results[obd_sensors.SENSORS[index].shortname] = value
-			#TODO: send data to onep
+
+				print "Send " + obd_sensors.SENSORS[index].shortname + " = " + value
 				o.write(self.cik,
 						{"alias": obd_sensors.SENSORS[index].shortname},
 						value,
