@@ -48,8 +48,8 @@ class OBD_Capture():
         # loop through PIDs binary
         for i in range(0, len(self.supp)):
 
-			if (i >= (len(self.supp) - 1)):
-				break
+            if i >= (len(self.supp) - 1):
+                break
 
             if self.supp[i] == "1":
                 # store index of sensor and sensor object
