@@ -69,9 +69,14 @@ class Obd2Cloud():
 						{"alias": obd_sensors.SENSORS[index].shortname},
 						value,
 						{})
+
+			time.sleep(3)
+
 CIK = 'b7e588466225dde46de44b0017072b2ccb39a4a0' #for test
 logItems = ["rpm", "speed", "load", "fuel_status"]
 o = Obd2Cloud(logItems, CIK)
+
+o.connect()
 
 if not o.isConnected():
 	print "Not connected"
