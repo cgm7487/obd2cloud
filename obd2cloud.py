@@ -30,7 +30,7 @@ class Obd2Cloud():
 
 	def connect(self):
 		portnames = scanSerial()
-		print protnames
+		#print protnames
 		for port in portnames:
 			self.port = obd_io.OBDPort(port, None, 2, 2)
 			if(self.port.State == 0):
@@ -58,22 +58,22 @@ class Obd2Cloud():
 
 		print "start sending to cloud"
 
-		o = onep.OnepV1()
+		#o = onep.OnepV1()
 		while 1:
 			for index in self.sensorlist:
 				(name, value, unit) = self.port.sensor(index)
 				#results[obd_sensors.SENSORS[index].shortname] = value
 
-				print "Send " + obd_sensors.SENSORS[index].shortname + " = " + value
-				o.write(self.cik,
-						{"alias": obd_sensors.SENSORS[index].shortname},
-						value,
-						{})
-
-			time.sleep(3)
+				print "Send " + obd_sensors.SENSORS[index].shortname + " = " + str(value)
+#				o.write(self.cik,
+#						{"alias": obd_sensors.SENSORS[index].shortname},
+#						value,
+#						{})
+#
+			time.sleep(10)
 
 CIK = 'b7e588466225dde46de44b0017072b2ccb39a4a0' #for test
-logItems = ["rpm", "speed", "load", "fuel_status"]
+logItems = ["rpm", "speed"]
 o = Obd2Cloud(logItems, CIK)
 
 o.connect()
