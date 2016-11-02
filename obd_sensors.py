@@ -62,6 +62,10 @@ def voltage(code):
     code = hex_to_int(code)
     return code/1000
 
+def fuel_rate(code):
+   code = hex_to_int(code)
+   return code/20
+
 def temp(code):
     code = hex_to_int(code)
     c = code - 40 
@@ -174,8 +178,10 @@ SENSORS = [
     Sensor("aux_input"             , "Aux input status"				, "011E" , cpass            ,""       ),
     Sensor("engine_time"           , "Engine Start MIN"				, "011F" , sec_to_min       ,"min"    ),
     Sensor("ecu_volt"              , "Control module voltage"                   , "0142" , voltage          ,"volt"   ),
+    Sensor("amb_temp"              , "Ambient air temperature"                  , "0146" , temp             ,"C"   ),
     Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D"             , "0149" , fuel_trim_percent,"%"      ),
     Sensor("engine_mil_time"       , "Engine Run MIL"				, "014D" , sec_to_min       ,"min"    ),
+    Sensor("engine_fuel_rate"       , "Engine fuel rate"                        , "015E" , fuel_rate        ,"L/h"    ),
     ]
      
     
