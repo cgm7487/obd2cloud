@@ -48,14 +48,14 @@ class OBD_Capture():
         # loop through PIDs binary
         for i in range(0, len(self.supp)):
 
-            if i >= (len(self.supp) - 1):
-                break
+            #if i >= (len(self.supp) - 1):
+                #break
 
             if self.supp[i] == "1":
                 # store index of sensor and sensor object
                 self.supportedSensorList.append([i+1, obd_sensors.SENSORS[i+1]])
             else:
-                self.unsupportedSensorList.append([i+1, obd_sensors.SENSORS[i+1]])
+                #self.unsupportedSensorList.append([i+1, obd_sensors.SENSORS[i+1]])
         
         for supportedSensor in self.supportedSensorList:
             text += "supported sensor index = " + str(supportedSensor[0]) + " " + str(supportedSensor[1].shortname) + "\n"
