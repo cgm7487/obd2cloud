@@ -58,6 +58,10 @@ def sec_to_min(code):
     code = hex_to_int(code)
     return code / 60
 
+def voltage(code):
+    code = hex_to_int(code)
+    return code/1000
+
 def temp(code):
     code = hex_to_int(code)
     c = code - 40 
@@ -169,6 +173,8 @@ SENSORS = [
     Sensor("o2_sensor_position_b"  , "Loc of O2 sensor" 			, "011D" , cpass            ,""       ),
     Sensor("aux_input"             , "Aux input status"				, "011E" , cpass            ,""       ),
     Sensor("engine_time"           , "Engine Start MIN"				, "011F" , sec_to_min       ,"min"    ),
+    Sensor("ecu_volt"              , "Control module voltage"                   , "0142" , voltage          ,"volt"   ),
+    Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D"             , "0149" , fuel_trim_percent,"%"      ),
     Sensor("engine_mil_time"       , "Engine Run MIL"				, "014D" , sec_to_min       ,"min"    ),
     ]
      
