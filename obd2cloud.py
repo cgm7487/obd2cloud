@@ -275,19 +275,19 @@ class Obd2Cloud():
         print "start sending to cloud"
 
         writeData = ""
-        isFirst = false;
+        isFirst = True;
         for index in self.sensorlist:
             (name, value, unit) = self.port.sensor(index)
             if not isFirst:
                 writeData += "&"
             
-            isFirst = true;
+            isFirst = False;
             writeData += obd_sensors.SENSORS[index].shortname + "=" + str(value)
 
         print "Send " + writeData
-        WRITE(writeData, SOLUTION_ID, SERIAL_NUM) 
+        #WRITE(writeData, SOLUTION_ID, SERIAL_NUM) 
 
-cik =  GET_STORED_CIK(SOLUTION_ID, SERIAL_NUM);
+cik = '1234' #GET_STORED_CIK(SOLUTION_ID, SERIAL_NUM);
 logItems = ["fuel_status", "temp", "rpm", "speed"]
 
 o = Obd2Cloud(logItems, cik)
@@ -299,4 +299,4 @@ if not o.isConnected():
 
 while 1:
     o.sendDataToCloud();
-    sleep(10)
+    time.sleep(10)
