@@ -22,6 +22,17 @@ from obd_utils import scanSerial
 SOLUTION_ID = "7q5njfx4oyldi"
 SERIAL_NUM = "als7061"
 
+class FakeSocket:
+    def __init__(self, response_str):
+        if PYTHON == 2:
+            self._file = StringIO(response_str)
+        else:
+            self._file = BytesIO(response_str)
+
+    def makefile(self, *args, **kwargs):
+        return self._file
+
+
 def SOCKET_SEND(http_packet, host_address, https_port):
     # SEND REQUEST
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
