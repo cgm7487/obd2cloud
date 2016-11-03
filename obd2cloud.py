@@ -17,10 +17,26 @@ from datetime import datetime
 import time
 import getpass
 
+import socket
+import ssl
+
 from obd_utils import scanSerial
 
 SOLUTION_ID = "7q5njfx4oyldi"
 SERIAL_NUM = "als7061"
+SHOW_HTTP_REQUESTS = False
+
+try:
+    from StringIO import StringIO
+    import httplib
+    input = raw_input
+    PYTHON = 2
+except ImportError:
+    from http import client as httplib
+    from io import StringIO, BytesIO
+
+    PYTHON = 3 
+
 
 class FakeSocket:
     def __init__(self, response_str):
