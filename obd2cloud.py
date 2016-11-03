@@ -22,7 +22,7 @@ import ssl
 
 from obd_utils import scanSerial
 
-SOLUTION_ID = "7q5njfx4oyldi"
+PRODUCT_ID = "y7o6tu5q115opqfr"
 SERIAL_NUM = "als7061"
 SHOW_HTTP_REQUESTS = False
 
@@ -322,9 +322,9 @@ class Obd2Cloud():
             writeData += obd_sensors.SENSORS[index].shortname + "=" + str(value)
 
         print "Send " + writeData
-        WRITE(writeData, SOLUTION_ID, SERIAL_NUM) 
+        WRITE(writeData, PRODUCT_ID, SERIAL_NUM) 
 
-cik = GET_STORED_CIK(SOLUTION_ID, SERIAL_NUM);
+cik = GET_STORED_CIK(PRODUCT_ID, SERIAL_NUM);
 logItems = ["temp", "rpm", "speed"]#, "maf", "throttle_pos", "ecu_volt", "amb_temp", "acc_pedal_pos_d", "engine_fuel_rate"]
 
 o = Obd2Cloud(logItems, cik)
