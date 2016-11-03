@@ -26,6 +26,16 @@ SOLUTION_ID = "7q5njfx4oyldi"
 SERIAL_NUM = "als7061"
 SHOW_HTTP_REQUESTS = False
 
+class FakeSocket:
+    def __init__(self, response_str):
+        if PYTHON == 2:
+            self._file = StringIO(response_str)
+        else:
+            self._file = BytesIO(response_str)
+
+    def makefile(self, *args, **kwargs):
+        return self._file
+
 try:
     from StringIO import StringIO
     import httplib
