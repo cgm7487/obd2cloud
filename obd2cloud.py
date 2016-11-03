@@ -285,10 +285,10 @@ class Obd2Cloud():
             writeData += obd_sensors.SENSORS[index].shortname + "=" + str(value)
 
         print "Send " + writeData
-        #WRITE(writeData, SOLUTION_ID, SERIAL_NUM) 
+        WRITE(writeData, SOLUTION_ID, SERIAL_NUM) 
 
-cik = '1234' #GET_STORED_CIK(SOLUTION_ID, SERIAL_NUM);
-logItems = ["temp", "rpm", "speed", "maf", "throttle_pos", "ecu_volt", "amb_temp", "acc_pedal_pos_d", "engine_fuel_rate"]
+cik = GET_STORED_CIK(SOLUTION_ID, SERIAL_NUM);
+logItems = ["temp", "rpm", "speed"]#, "maf", "throttle_pos", "ecu_volt", "amb_temp", "acc_pedal_pos_d", "engine_fuel_rate"]
 
 o = Obd2Cloud(logItems, cik)
 
