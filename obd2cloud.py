@@ -325,7 +325,7 @@ class Obd2Cloud():
         WRITE(writeData, PRODUCT_ID, SERIAL_NUM) 
 
 cik = GET_STORED_CIK(PRODUCT_ID, SERIAL_NUM);
-logItems = ["temp", "rpm", "speed"]#, "maf", "throttle_pos", "ecu_volt", "amb_temp", "acc_pedal_pos_d", "engine_fuel_rate"]
+logItems = ["rpm", "speed", "maf", "throttle_pos", "ecu_volt", "amb_temp", "acc_pedal_pos_d", "engine_fuel_rate"]
 
 o = Obd2Cloud(logItems, cik)
 
