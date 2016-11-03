@@ -3,12 +3,6 @@
 import sys
 import httplib
 
-#import pyonep
-#from pyonep.provision import Provision
-#from pyonep.onep import OneV1
-#from pyonep.exceptions import ProvisionException
-from pyonep import onep
-
 import obd_io
 import serial
 import platform
@@ -25,6 +19,8 @@ from obd_utils import scanSerial
 PRODUCT_ID = "y7o6tu5q115opqfr"
 SERIAL_NUM = "als7061"
 SHOW_HTTP_REQUESTS = False
+
+gpsSer = serial.Serial('/dev/ttyUSB0', 4800, timeout=None)
 
 class FakeSocket:
     def __init__(self, response_str):
@@ -321,6 +317,7 @@ class Obd2Cloud():
             isFirst = False;
             writeData += obd_sensors.SENSORS[index].shortname + "=" + str(value)
 
+        writeData += "&"+"gps="+gpsSer.readline()
         print "Send " + writeData
         WRITE(writeData, PRODUCT_ID, SERIAL_NUM) 
 
