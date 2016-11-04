@@ -20,7 +20,7 @@ PRODUCT_ID = "y7o6tu5q115opqfr"
 SERIAL_NUM = "als7061"
 SHOW_HTTP_REQUESTS = False
 
-gpsSer = serial.Serial('/dev/ttyUSB0', 4800, timeout=None)
+#gpsSer = serial.Serial('/dev/ttyUSB0', 4800, timeout=None)
 
 class FakeSocket:
     def __init__(self, response_str):
@@ -317,7 +317,14 @@ class Obd2Cloud():
             isFirst = False;
             writeData += obd_sensors.SENSORS[index].shortname + "=" + str(value)
 
-        writeData += "&"+"gps="+gpsSer.readline()
+        gpsSer = serial.Serial('/dev/ttyUSB0', 4800, timeout=None)
+        gpsData = gpsSer.readline()
+	if gpsData[1:6] != "GPGGA":
+            gpsData = "NODATA"
+
+        writeData += "&gps="+gpsData
+        gpsSer.close()
+
         print "Send " + writeData
         WRITE(writeData, PRODUCT_ID, SERIAL_NUM) 
 
@@ -333,4 +340,4 @@ if not o.isConnected():
 
 while 1:
     o.sendDataToCloud();
-    time.sleep(10)
+    time.sleep(60)

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo rfcomm bind 0 88:18:56:68:98:EB
+python obd2cloud.py&
+
+exit 0
