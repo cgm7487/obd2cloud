@@ -182,13 +182,13 @@ SENSORS = [
     Sensor("o2_sensor_position_b"  , "Loc of O2 sensor" 			, "011D" , cpass            ,""       ),
     Sensor("aux_input"             , "Aux input status"				, "011E" , cpass            ,""       ),
     Sensor("engine_time"           , "Engine Start MIN"				, "011F" , sec_to_min       ,"min"    ),
-    Sensor("ecu_volt"              , "Control module voltage"       , "0142" , voltage          ,"volt"   ),
-    Sensor("fuel_air_comm_equ_rat"), "Fuel-Air Commanded equivalence ratio", "0144", ratio_percent, "%"   ),
-    Sensor("amb_temp"              , "Ambient air temperature"      , "0146" , temp             ,"C"   ),
-    Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D" , "0149" , percent_scale    ,"%"      ),
+    Sensor("ecu_volt"              , "Control module voltage"                   , "0142" , voltage          ,"volt"   ),
+    Sensor("fuel_air_comm_equ_rat" , "Fuel-Air Commanded equivalence ratio"     , "0144" , ratio_percent    ,"%"      ),
+    Sensor("amb_temp"              , "Ambient air temperature"                  , "0146" , temp             ,"C"      ),
+    Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D"             , "0149" , percent_scale    ,"%"      ),
     Sensor("engine_mil_time"       , "Engine Run MIL"				, "014D" , sec_to_min       ,"min"    ),
-    Sensor("rel_acc_pedal_pos"     , "Relative Accelerator position", "014D" , percent_scale    ,"%"    ),
-    Sensor("engine_fuel_rate"      , "Engine fuel rate"             , "015E" , fuel_rate        ,"L/h"    ),
+    Sensor("rel_acc_pedal_pos"     , "Relative Accelerator position"            , "014D" , percent_scale    ,"%"      ),
+    Sensor("engine_fuel_rate"      , "Engine fuel rate"                         , "015E" , fuel_rate        ,"L/h"    ),
     ]
      
     
