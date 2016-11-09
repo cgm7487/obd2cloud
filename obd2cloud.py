@@ -340,4 +340,4 @@ if not o.isConnected():
 
 while 1:
     o.sendDataToCloud();
-    time.sleep(60)
+    time.sleep(1)
