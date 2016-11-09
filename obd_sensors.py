@@ -80,6 +80,11 @@ def fuel_trim_percent(code):
     #return (code - 128.0) * 100.0 / 128
     return (code - 128) * 100 / 128
 
+def ratio_percent(code):
+    code = hex_to_int(code)
+    return (code*2.0)/65535.0
+
+
 def dtc_decrypt(code):
     #first byte is byte after PID and without spaces
     num = hex_to_int(code[:2]) #A byte
@@ -177,11 +182,13 @@ SENSORS = [
     Sensor("o2_sensor_position_b"  , "Loc of O2 sensor" 			, "011D" , cpass            ,""       ),
     Sensor("aux_input"             , "Aux input status"				, "011E" , cpass            ,""       ),
     Sensor("engine_time"           , "Engine Start MIN"				, "011F" , sec_to_min       ,"min"    ),
-    Sensor("ecu_volt"              , "Control module voltage"                   , "0142" , voltage          ,"volt"   ),
-    Sensor("amb_temp"              , "Ambient air temperature"                  , "0146" , temp             ,"C"   ),
-    Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D"             , "0149" , fuel_trim_percent,"%"      ),
+    Sensor("ecu_volt"              , "Control module voltage"       , "0142" , voltage          ,"volt"   ),
+    Sensor("fuel_air_comm_equ_rat"), "Fuel-Air Commanded equivalence ratio", "0144", ratio_percent, "%"   ),
+    Sensor("amb_temp"              , "Ambient air temperature"      , "0146" , temp             ,"C"   ),
+    Sensor("acc_pedal_pos_d"       , "Accelerator pedal position D" , "0149" , percent_scale    ,"%"      ),
     Sensor("engine_mil_time"       , "Engine Run MIL"				, "014D" , sec_to_min       ,"min"    ),
-    Sensor("engine_fuel_rate"       , "Engine fuel rate"                        , "015E" , fuel_rate        ,"L/h"    ),
+    Sensor("rel_acc_pedal_pos"     , "Relative Accelerator position", "014D" , percent_scale    ,"%"    ),
+    Sensor("engine_fuel_rate"      , "Engine fuel rate"             , "015E" , fuel_rate        ,"L/h"    ),
     ]
      
     
