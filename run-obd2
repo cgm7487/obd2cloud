@@ -1,0 +1,38 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:        obd2cloud
+# Required-Start:  $network $remote_fs $syslog
+# Required-Stop:   $network $remote_fs $syslog
+# Default-Start:   2 3 4 5
+# Default-Stop: 
+# Short-Description: Start obd2cloud
+### END INIT INFO
+case $1 in
+	start)
+		log_daemon_msg "Starting obd2cloud"
+                cd /home/pi/obd2cloud 
+                ./connect_ble
+                exit 0
+  		;;
+	stop)
+		log_daemon_msg "Stopping obd2cloud"
+                exit 0
+  		;;
+	restart|force-reload)
+                exit 1
+  		;;
+	try-restart)
+                exit 1
+		;;
+	reload)
+		exit 3
+		;;
+	status)
+               exit 0
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|try-restart|force-reload|status}"
+		exit 2
+		;;
+esac
