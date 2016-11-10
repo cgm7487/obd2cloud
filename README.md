@@ -9,4 +9,7 @@ copy run-obd2 to /etc/init.d/
 if you want to remove auto-start:
 > sudo update-rc.d -f run-obd2 remove
 
+or use install.sh
+> ./install.sh
+
 
